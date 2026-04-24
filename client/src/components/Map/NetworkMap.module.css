@@ -1,0 +1,59 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: var(--bg-panel);
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  filter: saturate(1.15) contrast(1.05);
+}
+
+.legend {
+  position: absolute;
+  bottom: var(--space-sm);
+  left: var(--space-sm);
+  display: flex;
+  gap: var(--space-sm);
+  background: rgba(10, 11, 13, 0.85);
+  border: var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  backdrop-filter: blur(4px);
+  z-index: 500;
+}
+
+.legendItem {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+}
+
+:global(.line-pulse) {
+  animation: linePulse 1.8s ease-in-out infinite;
+}
+
+:global(.station-pulse) {
+  animation: stationPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes linePulse {
+  0%,
+  100% {
+    stroke-opacity: 1;
+  }
+  50% {
+    stroke-opacity: 0.55;
+  }
+}
+
+@keyframes stationPulse {
+  0%,
+  100% {
+    fill-opacity: 0.9;
+  }
+  50% {
+    fill-opacity: 0.45;
+  }
+}

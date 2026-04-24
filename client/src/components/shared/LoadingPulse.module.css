@@ -1,0 +1,27 @@
+.wrapper {
+  display: grid;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.row {
+  height: 12px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(0, 255, 136, 0.22),
+    rgba(255, 255, 255, 0.08)
+  );
+  background-size: 200% 100%;
+  animation: loading-scan 1.3s ease-in-out infinite;
+}
+
+@keyframes loading-scan {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}

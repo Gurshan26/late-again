@@ -1,0 +1,67 @@
+.card {
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  background: linear-gradient(140deg, var(--bg-panel-raised), var(--bg-panel));
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.16em;
+}
+
+.lineTag {
+  margin-top: var(--space-xs);
+  font-family: var(--font-display);
+  color: var(--accent-signal);
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+.scoreRow {
+  margin-top: var(--space-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.scoreInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.riskLabel {
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+.scoreNum {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.weatherRow {
+  margin-top: var(--space-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.weatherDetail {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.67rem;
+  font-family: var(--font-display);
+  color: var(--text-secondary);
+}
+
+.advice {
+  margin-top: var(--space-sm);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+}

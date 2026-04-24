@@ -1,0 +1,43 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: grid;
+  place-items: center;
+  padding: var(--space-md);
+  z-index: 1200;
+}
+
+.modal {
+  width: min(620px, 100%);
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-panel);
+  padding: var(--space-lg);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.list {
+  margin-top: var(--space-md);
+  display: grid;
+  gap: var(--space-sm);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  padding-left: 18px;
+}
+
+.closeBtn {
+  margin-top: var(--space-md);
+  border: var(--border-active);
+  background: transparent;
+  color: var(--accent-signal);
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  cursor: pointer;
+  font-family: var(--font-display);
+}

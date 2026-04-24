@@ -1,0 +1,30 @@
+.wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-xl);
+}
+
+.panel {
+  width: min(420px, 100%);
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  background: var(--bg-panel);
+  text-align: center;
+}
+
+.message {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.button {
+  border: var(--border-active);
+  background: transparent;
+  color: var(--accent-signal);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}

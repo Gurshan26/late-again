@@ -1,0 +1,88 @@
+.card {
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-panel-raised);
+  display: grid;
+  grid-template-columns: 5px 1fr;
+  cursor: pointer;
+  animation: slide-in-up 0.45s ease both;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.selected {
+  border: var(--border-active);
+  box-shadow: inset 0 0 0 1px rgba(0, 255, 136, 0.1);
+}
+
+.stripe {
+  background: var(--line-colour);
+}
+
+.body {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.nameBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.group {
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+}
+
+.loading {
+  font-family: var(--font-display);
+  color: var(--accent-signal);
+  animation: blink 1.2s linear infinite;
+}
+
+.meta {
+  margin-top: var(--space-xs);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.riskLabel {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.alertBadge,
+.delayBadge {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.62rem;
+  font-family: var(--font-display);
+}
+
+.alertBadge {
+  color: var(--accent-alert);
+  border-color: rgba(255, 60, 60, 0.35);
+}
+
+.delayBadge {
+  color: var(--accent-warning);
+  border-color: rgba(255, 170, 0, 0.35);
+}

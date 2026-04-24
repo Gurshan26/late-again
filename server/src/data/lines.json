@@ -1,0 +1,220 @@
+[
+  {
+    "id": "alamein",
+    "name": "Alamein",
+    "colour": "#094C8D",
+    "group": "Burnley",
+    "terminus": ["Alamein", "Flinders Street"],
+    "keyStations": ["Camberwell", "Riversdale", "Alamein"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8238, 145.0580],
+      [-37.8387, 145.0801]
+    ]
+  },
+  {
+    "id": "belgrave",
+    "name": "Belgrave",
+    "colour": "#094C8D",
+    "group": "Burnley",
+    "terminus": ["Belgrave", "Flinders Street"],
+    "keyStations": ["Camberwell", "Ringwood", "Belgrave"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8154, 145.2243],
+      [-37.9063, 145.3561]
+    ]
+  },
+  {
+    "id": "glen-waverley",
+    "name": "Glen Waverley",
+    "colour": "#094C8D",
+    "group": "Burnley",
+    "terminus": ["Glen Waverley", "Flinders Street"],
+    "keyStations": ["Camberwell", "Syndal", "Glen Waverley"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8543, 145.1522],
+      [-37.8778, 145.1644]
+    ]
+  },
+  {
+    "id": "lilydale",
+    "name": "Lilydale",
+    "colour": "#094C8D",
+    "group": "Burnley",
+    "terminus": ["Lilydale", "Flinders Street"],
+    "keyStations": ["Camberwell", "Ringwood", "Lilydale"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8154, 145.2243],
+      [-37.7578, 145.3471]
+    ]
+  },
+  {
+    "id": "cranbourne",
+    "name": "Cranbourne",
+    "colour": "#16B4E8",
+    "group": "Caulfield",
+    "terminus": ["Cranbourne", "City Loop"],
+    "keyStations": ["Caulfield", "Dandenong", "Cranbourne"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8771, 145.0228],
+      [-37.9977, 145.2831],
+      [-38.0986, 145.2835]
+    ]
+  },
+  {
+    "id": "pakenham",
+    "name": "Pakenham",
+    "colour": "#16B4E8",
+    "group": "Caulfield",
+    "terminus": ["Pakenham", "City Loop"],
+    "keyStations": ["Caulfield", "Dandenong", "Pakenham"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8771, 145.0228],
+      [-37.9977, 145.2831],
+      [-38.0704, 145.4877]
+    ]
+  },
+  {
+    "id": "sunbury",
+    "name": "Sunbury",
+    "colour": "#16B4E8",
+    "group": "Caulfield",
+    "terminus": ["Sunbury", "City Loop"],
+    "keyStations": ["Footscray", "Sunshine", "Sunbury"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8002, 144.8997],
+      [-37.7897, 144.8298],
+      [-37.5769, 144.7283]
+    ]
+  },
+  {
+    "id": "hurstbridge",
+    "name": "Hurstbridge",
+    "colour": "#F0801A",
+    "group": "Clifton Hill",
+    "terminus": ["Hurstbridge", "City Loop"],
+    "keyStations": ["Clifton Hill", "Greensborough", "Hurstbridge"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.7869, 145.0019],
+      [-37.7058, 145.1007],
+      [-37.6472, 145.1992]
+    ]
+  },
+  {
+    "id": "mernda",
+    "name": "Mernda",
+    "colour": "#F0801A",
+    "group": "Clifton Hill",
+    "terminus": ["Mernda", "City Loop"],
+    "keyStations": ["Clifton Hill", "South Morang", "Mernda"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.7869, 145.0019],
+      [-37.6599, 145.0957],
+      [-37.5957, 145.0928]
+    ]
+  },
+  {
+    "id": "sandringham",
+    "name": "Sandringham",
+    "colour": "#F0801A",
+    "group": "Cross City",
+    "terminus": ["Sandringham", "Werribee"],
+    "keyStations": ["Flinders Street", "Brighton Beach", "Sandringham"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.9131, 145.0077],
+      [-37.9518, 145.0066]
+    ]
+  },
+  {
+    "id": "werribee",
+    "name": "Werribee",
+    "colour": "#F0801A",
+    "group": "Cross City",
+    "terminus": ["Werribee", "Flinders Street"],
+    "keyStations": ["Footscray", "Laverton", "Werribee"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8002, 144.8997],
+      [-37.8635, 144.7742],
+      [-37.9044, 144.6577]
+    ]
+  },
+  {
+    "id": "williamstown",
+    "name": "Williamstown",
+    "colour": "#F0801A",
+    "group": "Cross City",
+    "terminus": ["Williamstown", "Flinders Street"],
+    "keyStations": ["Newport", "North Williamstown", "Williamstown"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8456, 144.8804],
+      [-37.8681, 144.8956],
+      [-37.8688, 144.8978]
+    ]
+  },
+  {
+    "id": "craigieburn",
+    "name": "Craigieburn",
+    "colour": "#FFCD00",
+    "group": "Northern",
+    "terminus": ["Craigieburn", "City Loop"],
+    "keyStations": ["North Melbourne", "Broadmeadows", "Craigieburn"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8057, 144.9438],
+      [-37.6807, 144.9163],
+      [-37.6021, 144.9381]
+    ]
+  },
+  {
+    "id": "upfield",
+    "name": "Upfield",
+    "colour": "#FFCD00",
+    "group": "Northern",
+    "terminus": ["Upfield", "City Loop"],
+    "keyStations": ["North Melbourne", "Coburg", "Upfield"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8057, 144.9438],
+      [-37.7444, 144.9650],
+      [-37.7026, 144.9573]
+    ]
+  },
+  {
+    "id": "frankston",
+    "name": "Frankston",
+    "colour": "#009B77",
+    "group": "Frankston",
+    "terminus": ["Frankston", "City Loop"],
+    "keyStations": ["Caulfield", "Cheltenham", "Frankston"],
+    "coordinates": [
+      [-37.8183, 144.9671],
+      [-37.8771, 145.0228],
+      [-37.9564, 145.0564],
+      [-38.1437, 145.1256]
+    ]
+  },
+  {
+    "id": "stony-point",
+    "name": "Stony Point",
+    "colour": "#009B77",
+    "group": "Stony Point",
+    "terminus": ["Stony Point", "Frankston"],
+    "keyStations": ["Leawarra", "Baxter", "Stony Point"],
+    "coordinates": [
+      [-38.1437, 145.1256],
+      [-38.2073, 145.2002],
+      [-38.3736, 145.2230]
+    ]
+  }
+]

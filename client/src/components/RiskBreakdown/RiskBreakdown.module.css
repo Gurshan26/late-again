@@ -1,0 +1,65 @@
+.panel {
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-panel);
+  padding: var(--space-md);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.16em;
+}
+
+.total {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  color: var(--text-primary);
+}
+
+.list {
+  margin-top: var(--space-sm);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: var(--space-xs);
+}
+
+.factorCol {
+  display: grid;
+  gap: 2px;
+}
+
+.factor {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+}
+
+.exp {
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+}
+
+.points {
+  font-family: var(--font-display);
+  color: var(--accent-warning);
+}
+
+.empty {
+  margin-top: var(--space-sm);
+  color: var(--text-secondary);
+}

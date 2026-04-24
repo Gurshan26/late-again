@@ -1,0 +1,78 @@
+.panel {
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-panel);
+  padding: var(--space-md);
+}
+
+.rowTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.16em;
+}
+
+.linkBtn,
+.clearBtn {
+  border: none;
+  background: transparent;
+  color: var(--accent-mid);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+}
+
+.summary {
+  margin-top: var(--space-sm);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+}
+
+.form {
+  margin-top: var(--space-sm);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.field {
+  display: grid;
+  gap: 3px;
+}
+
+.field span {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  color: var(--text-secondary);
+}
+
+.field input,
+.field select {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+}
+
+.rowTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.saveBtn {
+  border: var(--border-active);
+  background: transparent;
+  color: var(--accent-signal);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+}

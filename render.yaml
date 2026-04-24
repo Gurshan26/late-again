@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: late-again-server
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PTV_API_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /health
+
+  - type: static
+    name: late-again-client
+    buildCommand: npm run build --workspace=client
+    staticPublishPath: client/dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: late-again-server
+          property: hostURL

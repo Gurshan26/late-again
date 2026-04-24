@@ -1,0 +1,51 @@
+.panel {
+  border: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-panel);
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: var(--space-sm);
+  border-bottom: var(--border-subtle);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filterBtn,
+.sortBtn {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.67rem;
+  font-family: var(--font-display);
+  cursor: pointer;
+}
+
+.active {
+  color: var(--accent-signal);
+  border-color: rgba(0, 255, 136, 0.4);
+}
+
+.sortWrap {
+  display: flex;
+  gap: 6px;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  overflow-y: auto;
+  max-height: 560px;
+}

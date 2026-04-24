@@ -1,0 +1,54 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.key {
+  color: var(--text-secondary);
+}
+
+.value {
+  font-weight: 700;
+}
+
+.age {
+  color: var(--text-secondary);
+}
+
+.sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.live {
+  color: var(--accent-signal);
+  border-color: rgba(0, 255, 136, 0.45);
+}
+
+.recent {
+  color: var(--accent-mid);
+  border-color: rgba(0, 210, 220, 0.45);
+}
+
+.stale {
+  color: var(--accent-warning);
+  border-color: rgba(255, 170, 0, 0.45);
+}
+
+.partial {
+  color: var(--accent-hot);
+  border-color: rgba(255, 110, 0, 0.45);
+}
+
+.demo,
+.unknown {
+  color: var(--text-secondary);
+  border-color: rgba(122, 130, 153, 0.45);
+}
