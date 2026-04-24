@@ -27,13 +27,14 @@ function inferConfidence(alert) {
 function affectsTrip(alert, profile) {
   if (!profile) return false;
 
-  const routeMatch = (alert.routes || []).some((routeId) => ROUTE_ID_MAP[routeId] === profile.lineId);
+  const activeLineId = profile.primaryLineId || profile.lineId;
+  const routeMatch = (alert.routes || []).some((routeId) => ROUTE_ID_MAP[routeId] === activeLineId);
   if (routeMatch) return true;
 
   if (!alert.facilityOnly) return false;
 
   const text = `${alert.header} ${alert.description} ${alert.plainEnglish}`.toLowerCase();
-  return [profile.origin, profile.destination]
+  return [profile.origin?.name || profile.origin, profile.destination?.name || profile.destination]
     .filter(Boolean)
     .some((station) => text.includes(String(station).toLowerCase()));
 }

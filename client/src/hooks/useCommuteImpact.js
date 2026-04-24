@@ -6,14 +6,16 @@ function buildUrl(profile) {
   const url = new URL(`${API_BASE}/api/commute/impact`);
   if (!profile) return url.toString();
 
-  url.searchParams.set('lineId', profile.lineId || 'frankston');
-  if (profile.origin) url.searchParams.set('origin', profile.origin);
-  if (profile.destination) url.searchParams.set('destination', profile.destination);
+  const primaryLineId = profile.primaryLineId || profile.lineId || 'frankston';
+  url.searchParams.set('lineId', primaryLineId);
+  url.searchParams.set('primaryLineId', primaryLineId);
+  if (profile.origin?.name) url.searchParams.set('origin', profile.origin.name);
+  if (profile.destination?.name) url.searchParams.set('destination', profile.destination.name);
   if (profile.bufferMinutes !== undefined && profile.bufferMinutes !== null) {
     url.searchParams.set('bufferMinutes', String(profile.bufferMinutes));
   }
-  if (profile.usualDeparture) url.searchParams.set('departureTime', profile.usualDeparture);
-  if (profile.preferredArrival) url.searchParams.set('preferredArrival', profile.preferredArrival);
+  if (profile.time) url.searchParams.set('departureTime', profile.time);
+  if (profile.timeMode) url.searchParams.set('timeMode', profile.timeMode);
 
   return url.toString();
 }

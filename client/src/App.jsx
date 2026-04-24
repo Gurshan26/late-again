@@ -24,7 +24,7 @@ export default function App() {
   const { profile, saveProfile, clearProfile } = useTripProfile();
   const [tripSetupExpanded, setTripSetupExpanded] = useState(!profile);
 
-  const effectiveLine = selectedLine || profile?.lineId || 'frankston';
+  const effectiveLine = selectedLine || profile?.primaryLineId || profile?.lineId || 'frankston';
   const { data: selectedLineData } = useDelayData(effectiveLine);
 
   useEffect(() => {

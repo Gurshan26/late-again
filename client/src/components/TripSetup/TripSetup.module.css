@@ -22,7 +22,7 @@
 .clearBtn {
   border: none;
   background: transparent;
-  color: var(--accent-mid);
+  color: var(--accent-signal);
   cursor: pointer;
   font-family: var(--font-display);
   font-size: 0.66rem;
@@ -34,6 +34,13 @@
   font-size: 0.82rem;
 }
 
+.optionSummary {
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  font-family: var(--font-display);
+}
+
 .form {
   margin-top: var(--space-sm);
   display: grid;
@@ -42,7 +49,8 @@
 
 .field {
   display: grid;
-  gap: 3px;
+  gap: 4px;
+  position: relative;
 }
 
 .field span {
@@ -57,7 +65,7 @@
   color: var(--text-primary);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-sm);
-  padding: 6px 8px;
+  padding: 7px 9px;
 }
 
 .rowTwo {
@@ -75,4 +83,110 @@
   cursor: pointer;
   font-family: var(--font-display);
   font-size: 0.7rem;
+}
+
+.saveBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.suggestionList {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  background: var(--bg-panel-raised);
+  z-index: 40;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.suggestionItem {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.suggestionItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.error {
+  color: var(--accent-alert);
+  font-size: 0.74rem;
+  margin-top: 2px;
+}
+
+.note {
+  margin-top: var(--space-sm);
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+}
+
+.optionList {
+  margin-top: var(--space-md);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.optionTitle {
+  font-family: var(--font-display);
+  color: var(--text-secondary);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+}
+
+.optionCard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 9px;
+  background: rgba(255, 255, 255, 0.02);
+  display: grid;
+  gap: 7px;
+}
+
+.optionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.optionTimes {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+}
+
+.optionMeta {
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+}
+
+.optionRisk {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+}
+
+.optionAdvice {
+  color: var(--text-primary);
+  font-size: 0.77rem;
+}
+
+.useBtn {
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  background: transparent;
+  color: var(--accent-signal);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.66rem;
 }

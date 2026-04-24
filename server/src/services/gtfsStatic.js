@@ -8,6 +8,9 @@ const GTFS_URL = 'https://data.ptv.vic.gov.au/downloads/gtfs.zip';
 const DATA_DIR = path.resolve(__dirname, '../../..', 'data', 'gtfs');
 const ZIP_PATH = path.join(DATA_DIR, 'gtfs.zip');
 const FEED_DIR = path.join(DATA_DIR, 'active_feed');
+const MODE_ID = '2';
+const MODE_ZIP_PATH = path.join(DATA_DIR, MODE_ID, 'google_transit.zip');
+const SOURCE_MARKER_PATH = path.join(FEED_DIR, '.source-mode');
 
 const REQUIRED_FILES = [
   'routes.txt',
@@ -15,6 +18,7 @@ const REQUIRED_FILES = [
   'stop_times.txt',
   'stops.txt',
   'calendar.txt',
+  'calendar_dates.txt',
 ];
 
 let parsedGtfs = null;
@@ -27,27 +31,50 @@ function hasRequiredFiles() {
   return REQUIRED_FILES.every((file) => fs.existsSync(path.join(FEED_DIR, file)));
 }
 
-function findNestedTransitZip(dirPath) {
-  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
-  const matches = [];
+function hasMetroMarker() {
+  if (!fs.existsSync(SOURCE_MARKER_PATH)) return false;
+  return fs.readFileSync(SOURCE_MARKER_PATH, 'utf8').trim() === MODE_ID;
+}
 
-  for (const entry of entries) {
-    const fullPath = path.join(dirPath, entry.name);
-    if (entry.isDirectory()) {
-      matches.push(...findNestedTransitZip(fullPath));
-      continue;
-    }
+function isMetroRoutesFile() {
+  const routesPath = path.join(FEED_DIR, 'routes.txt');
+  if (!fs.existsSync(routesPath)) return false;
 
-    if (entry.isFile() && entry.name === 'google_transit.zip') {
-      matches.push(fullPath);
-    }
+  const sample = fs.readFileSync(routesPath, 'utf8').slice(0, 2048);
+  return sample.includes('vic-02-');
+}
+
+function hasMetroFeedReady() {
+  if (!hasRequiredFiles()) return false;
+  if (hasMetroMarker()) return true;
+  return isMetroRoutesFile();
+}
+
+function ensureArchiveExtracted() {
+  if (fs.existsSync(MODE_ZIP_PATH)) return;
+  if (!fs.existsSync(ZIP_PATH)) return;
+
+  const zip = new AdmZip(ZIP_PATH);
+  zip.extractAllTo(DATA_DIR, true);
+}
+
+function extractMetroFeed() {
+  ensureArchiveExtracted();
+
+  if (!fs.existsSync(MODE_ZIP_PATH)) {
+    throw new Error(`Could not locate metro GTFS zip at ${MODE_ZIP_PATH}`);
   }
 
-  if (dirPath !== DATA_DIR) return matches;
-  if (matches.length === 0) return null;
+  fs.rmSync(FEED_DIR, { recursive: true, force: true });
+  fs.mkdirSync(FEED_DIR, { recursive: true });
 
-  const sortedBySize = matches.sort((a, b) => fs.statSync(a).size - fs.statSync(b).size);
-  return sortedBySize[0];
+  const metroZip = new AdmZip(MODE_ZIP_PATH);
+  metroZip.extractAllTo(FEED_DIR, true);
+  fs.writeFileSync(SOURCE_MARKER_PATH, MODE_ID, 'utf8');
+
+  if (!hasRequiredFiles()) {
+    throw new Error('Metro GTFS extraction did not produce required CSV files');
+  }
 }
 
 async function downloadZipIfNeeded() {
@@ -66,20 +93,8 @@ async function downloadZipIfNeeded() {
     zip.extractAllTo(DATA_DIR, true);
   }
 
-  if (hasRequiredFiles()) return;
-
-  const nestedZip = findNestedTransitZip(DATA_DIR);
-  if (!nestedZip) {
-    throw new Error('Could not locate nested google_transit.zip in GTFS archive');
-  }
-
-  fs.mkdirSync(FEED_DIR, { recursive: true });
-  const innerZip = new AdmZip(nestedZip);
-  innerZip.extractAllTo(FEED_DIR, true);
-
-  if (!hasRequiredFiles()) {
-    throw new Error('GTFS feed extraction did not produce required CSV files');
-  }
+  if (hasMetroFeedReady()) return;
+  extractMetroFeed();
 }
 
 function parseCsv(fileName) {
@@ -103,6 +118,7 @@ async function loadGtfsStaticData() {
     stopTimes: parseCsv('stop_times.txt'),
     stops: parseCsv('stops.txt'),
     calendar: parseCsv('calendar.txt'),
+    calendarDates: parseCsv('calendar_dates.txt'),
   };
 
   return parsedGtfs;

@@ -77,7 +77,7 @@ function headlineFor({ status, lineId, recommendation }) {
 
 router.get('/impact', async (req, res, next) => {
   try {
-    const lineId = req.query.lineId || 'frankston';
+    const lineId = req.query.primaryLineId || req.query.lineId || 'frankston';
     const datetime = req.query.datetime ? new Date(req.query.datetime) : new Date();
 
     if (Number.isNaN(datetime.getTime())) {
@@ -123,6 +123,7 @@ router.get('/impact', async (req, res, next) => {
       origin: req.query.origin || null,
       destination: req.query.destination || null,
       lineId,
+      primaryLineId: req.query.primaryLineId || lineId,
       bufferMinutes: req.query.bufferMinutes ? Number(req.query.bufferMinutes) : null,
       preferredArrival: req.query.preferredArrival || null,
       usualDeparture: req.query.departureTime || null,

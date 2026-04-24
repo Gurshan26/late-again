@@ -8,6 +8,7 @@ process.env.PTV_API_KEY = 'test-key';
 
 const gtfsRealtime = require('../src/services/gtfsRealtime');
 const weatherService = require('../src/services/weather');
+const plannerService = require('../src/services/planner');
 
 gtfsRealtime.getMetroAlerts = vi.fn().mockResolvedValue([
   {
@@ -39,6 +40,46 @@ weatherService.getWeatherForecast = vi.fn().mockResolvedValue({
 });
 weatherService.weatherRiskFactor = vi.fn().mockReturnValue(0.2);
 weatherService.toMelbourneHourString = vi.fn().mockReturnValue('2025-06-10T08:00');
+
+plannerService.getPlannerIndex = vi.fn().mockResolvedValue({});
+plannerService.searchStations = vi.fn().mockReturnValue([
+  {
+    id: 'vic:rail:FKN',
+    name: 'Frankston Station',
+    lat: -38.1437,
+    lon: 145.1256,
+    modes: ['metro'],
+  },
+]);
+plannerService.findJourneyOptions = vi.fn().mockReturnValue({
+  query: {
+    originId: 'vic:rail:FKN',
+    destinationId: 'vic:rail:FS',
+    date: '2025-06-10',
+    time: '08:10',
+    timeMode: 'depart',
+    timezone: 'Australia/Melbourne',
+  },
+  options: [
+    {
+      id: 'opt-1',
+      departureTime: '2025-06-10T08:12',
+      arrivalTime: '2025-06-10T09:02',
+      durationMinutes: 50,
+      transferCount: 0,
+      walkMinutes: 2,
+      legs: [],
+      involvedLineIds: ['frankston'],
+      primaryLineId: 'frankston',
+      maxAlertSeverity: 'moderate',
+      riskScore: 62,
+      riskLabel: 'MODERATE',
+      score: 71,
+    },
+  ],
+  partialSearch: false,
+  emptyReason: null,
+});
 
 const app = require('../src/index');
 
@@ -123,6 +164,40 @@ describe('GET /api/commute/impact', () => {
     expect(res.body.recommendation).toBeDefined();
     expect(res.body.risk).toBeDefined();
     expect(res.body.dataHealth).toBeDefined();
+  });
+});
+
+describe('GET /api/planner/stations', () => {
+  it('returns strict station matches', async () => {
+    const res = await request(app).get('/api/planner/stations').query({ query: 'Frank' });
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body.stations)).toBe(true);
+    expect(res.body.total).toBeGreaterThan(0);
+  });
+});
+
+describe('GET /api/planner/options', () => {
+  it('returns journey options payload', async () => {
+    const res = await request(app).get('/api/planner/options').query({
+      originId: 'vic:rail:FKN',
+      destinationId: 'vic:rail:FS',
+      date: '2025-06-10',
+      time: '08:10',
+      timeMode: 'depart',
+    });
+
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body.options)).toBe(true);
+    expect(res.body.options[0]).toHaveProperty('recommendation');
+    expect(res.body).toHaveProperty('dataHealth');
+  });
+
+  it('returns 400 for missing required query', async () => {
+    const res = await request(app).get('/api/planner/options').query({
+      originId: 'vic:rail:FKN',
+    });
+
+    expect(res.status).toBe(400);
   });
 });
 

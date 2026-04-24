@@ -8,6 +8,7 @@ const delaysRouter = require('./routes/delays');
 const predictRouter = require('./routes/predict');
 const weatherRouter = require('./routes/weather');
 const commuteRouter = require('./routes/commute');
+const plannerRouter = require('./routes/planner');
 const errorHandler = require('./middleware/errorHandler');
 const { initStaticGtfsData } = require('./services/gtfsStatic');
 
@@ -31,6 +32,7 @@ app.use('/api/delays', delaysRouter);
 app.use('/api/predict', predictRouter);
 app.use('/api/weather', weatherRouter);
 app.use('/api/commute', commuteRouter);
+app.use('/api/planner', plannerRouter);
 
 app.use(errorHandler);
 
