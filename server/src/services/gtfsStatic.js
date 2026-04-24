@@ -1,11 +1,15 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const os = require('node:os');
 const AdmZip = require('adm-zip');
 const fetch = require('node-fetch');
 const { parse } = require('csv-parse/sync');
 
 const GTFS_URL = 'https://data.ptv.vic.gov.au/downloads/gtfs.zip';
-const DATA_DIR = path.resolve(__dirname, '../../..', 'data', 'gtfs');
+const BASE_DATA_DIR = process.env.VERCEL
+  ? path.join(os.tmpdir(), 'late-again')
+  : path.resolve(__dirname, '../../..', 'data');
+const DATA_DIR = path.join(BASE_DATA_DIR, 'gtfs');
 const ZIP_PATH = path.join(DATA_DIR, 'gtfs.zip');
 const FEED_DIR = path.join(DATA_DIR, 'active_feed');
 const MODE_ID = '2';
